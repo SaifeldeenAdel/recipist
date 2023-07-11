@@ -8,7 +8,6 @@ export default function() {
     try{
       const {error} = await supabase.auth.signOut();
       if(error) throw error;
-      alert("cooked.");
     } catch(error){
       alert(error.error_description || error.message)
     }
