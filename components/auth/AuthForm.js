@@ -6,25 +6,25 @@ export default function AuthForm() {
 	const supabase = createClientComponentClient();
 	const [loading, setLoading] = useState(false);
 	const [email, setEmail] = useState("");
-  const [success, setSuccess] = useState(false)
+	const [success, setSuccess] = useState(false);
 
-  
-  const handleLogin = async (email) => {
-    try {
-      console.log("logging");
-      setLoading(true)
-      const { data, error } = await supabase.auth.signInWithOtp({ email, options: { emailRedirectTo:  "http://localhost:3000/auth/callback" } });
-      console.log(data);
-      if (error) throw error;
-      setSuccess(true);
-    } catch (error) {
-      alert(error.error_description || error.message);
-    } finally{
-      setLoading(false);
-    }
-  };
-
-
+	const handleLogin = async (email) => {
+		try {
+			console.log("logging");
+			setLoading(true);
+			const { data, error } = await supabase.auth.signInWithOtp({
+				email,
+				options: { emailRedirectTo: "http://localhost:3000/api/auth/callback" },
+			});
+			console.log(data);
+			if (error) throw error;
+			setSuccess(true);
+		} catch (error) {
+			alert(error.error_description || error.message);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	return (
 		<div className="sm:w-[20rem] w-[15rem] flex flex-col font-sans items-center text-[0.8rem] sm:text-[1rem] gap-2 sm:gap-4 ">
@@ -41,11 +41,15 @@ export default function AuthForm() {
 			<button
 				onClick={(e) => {
 					e.preventDefault();
-          handleLogin(email);
+					handleLogin(email);
 				}}
 				className={`px-[0.6rem] py-[0.5rem] sm:px-[1rem] sm:py-[0.8rem] bg-primaryBlue text-light rounded-xl w-[100%]`}
 			>
-				{loading ? "Cookin..." :  success ? "Check your Email!" : "Send Magic Link"}
+				{loading
+					? "Cookin..."
+					: success
+					? "Check your Email!"
+					: "Send Magic Link"}
 			</button>
 			<div className="flex flex-row font-medium items-center mt-[-0.2rem] gap-1">
 				<RiQuestionLine className="text-primaryRed  text-[1.2rem]" />{" "}
