@@ -1,5 +1,4 @@
 import AuthForm from "@/components/auth/AuthForm";
-import SignOut from "@/components/auth/SignOut";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -26,9 +25,9 @@ export default async function Home() {
 		);
 	} else {
 		return (
-			<main>
-				Welcome Home Roomie! {user?.email} <SignOut />
-			</main>
+			<>
+				Welcome Home Roomie! {user?.email}
+			</>
 		);
 	}
 }

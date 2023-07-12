@@ -14,6 +14,7 @@ module.exports = {
 				sans2: ["var(--montserrat)"],
 			},
 			colors: {
+				background: "#f0eee2",
 				light: "#F4F3EE",
 				light2: "#e2dec6",
 				dark: "#071108",
