@@ -1,4 +1,5 @@
 import AuthForm from "@/components/auth/AuthForm";
+import Recipes from "@/components/recipes/Recipes";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
@@ -26,7 +27,7 @@ export default async function Home() {
 	} else {
 		return (
 			<>
-				Welcome Home Roomie! {user?.email}
+        <Recipes/>
 			</>
 		);
 	}
