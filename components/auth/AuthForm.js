@@ -10,13 +10,11 @@ export default function AuthForm() {
 
 	const handleLogin = async (email) => {
 		try {
-			console.log("logging");
 			setLoading(true);
 			const { data, error } = await supabase.auth.signInWithOtp({
 				email,
 				options: { emailRedirectTo: "http://localhost:3000/api/auth/callback" },
 			});
-			console.log(data);
 			if (error) throw error;
 			setSuccess(true);
 		} catch (error) {

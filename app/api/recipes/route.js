@@ -12,7 +12,6 @@ export async function GET(req){
     }
 
   } catch (error) {
-    console.log(error)
     alert(error.description || error.message);
   }
   return NextResponse.json({recipes})

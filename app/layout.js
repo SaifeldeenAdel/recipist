@@ -38,8 +38,14 @@ export default async function RootLayout({ children }) {
 			<body
 				className={`${montserrat.variable} ${raleway.variable} ${caveat.variable} bg-background`}
 			>
-				{user && <Nav />}
-				<main className="mt-[4rem] w-[65rem] m-auto p-4">{children}</main>
+				{user ? (
+					<>
+						<Nav />
+						<main className="mt-[4rem] w-[65rem] m-auto p-4">{children}</main>
+					</>
+				) : (
+					<main>{children}</main>
+				)}
 			</body>
 		</html>
 	);

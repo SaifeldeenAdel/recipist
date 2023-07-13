@@ -27,7 +27,7 @@ export default async function Home() {
 	} else {
 		return (
 			<>
-        <Recipes/>
+				<Recipes />
 			</>
 		);
 	}
