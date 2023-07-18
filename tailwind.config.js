@@ -14,14 +14,13 @@ module.exports = {
 				sans2: ["var(--montserrat)"],
 			},
 			colors: {
-				background: "#f0eee2",
-				light: "#F4F3EE",
-				light2: "#e2dec6",
-				dark: "#071108",
-				primaryBlue: "#616fe9",
-				secondaryBlue: "#4958e2",
-				primaryRed: "#f54868",
-				secondaryRed: "#fc3055",
+				background: "#fef6f8",
+				primary: "#b61249",
+				secondary: "#FBEDD2",
+				accent: "#831237",
+				dark: "#050505",
+
+				text: "#130207",
 			},
 			backgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

@@ -17,8 +17,8 @@ export default function() {
   }, [])
   
   return (
-    <div className="font-sans text-3xl">
+    <>
       {loading ? "Loading" : recipes[0].title}
-    </div>
+    </>
   );
 }

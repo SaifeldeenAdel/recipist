@@ -13,7 +13,7 @@ export default async function Home() {
 		return (
 			<main className="flex flex-col h-[100vh] justify-center items-center">
 				<header className="flex flex-col justify-center items-center mb-10">
-					<div className="font-logo font-bold text-primaryBlue text-[6.5rem] sm:text-[9rem] z-1000">
+					<div className="font-logo font-bold text-primary text-[6.5rem] sm:text-[9rem] z-1000">
 						Recipist.
 					</div>
 					<div className="font-sans font-light text-dark text-[1.1rem] sm:text-[1.4rem] mt-[-1.2rem] sm:mt-[-1.8rem]">

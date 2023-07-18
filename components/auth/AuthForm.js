@@ -41,7 +41,7 @@ export default function AuthForm() {
 					e.preventDefault();
 					handleLogin(email);
 				}}
-				className={`px-[0.6rem] py-[0.5rem] sm:px-[1rem] sm:py-[0.8rem] bg-primaryBlue text-light rounded-xl w-[100%]`}
+				className={`px-[0.6rem] py-[0.5rem] sm:px-[1rem] sm:py-[0.8rem] bg-primary text-background rounded-xl w-[100%]`}
 			>
 				{loading
 					? "Cookin..."
@@ -50,7 +50,7 @@ export default function AuthForm() {
 					: "Send Magic Link"}
 			</button>
 			<div className="flex flex-row font-medium items-center mt-[-0.2rem] gap-1">
-				<RiQuestionLine className="text-primaryRed  text-[1.2rem]" />{" "}
+				<RiQuestionLine className="text-primary text-[1.2rem]" />{" "}
 				<span className="text-[0.8rem]">what's a Magic Link?</span>
 			</div>
 		</div>
