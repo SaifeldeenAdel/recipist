@@ -27,6 +27,16 @@ export default async function Home() {
 	} else {
 		return (
 			<>
+				<header className="w-full mb-10">
+					<h1 className="font-bold text-primary text-[1.7rem] md:text-[2rem] leading-12">
+						Your Creations
+					</h1>
+					<p className="font-light text-sm md:text-[1.1rem]">
+						Find all of your recipes here, you can also filter your
+						favourites.
+					</p>
+				</header>
+
 				<Recipes />
 			</>
 		);

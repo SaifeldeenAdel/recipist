@@ -41,7 +41,7 @@ export default async function RootLayout({ children }) {
 				{user ? (
 					<>
 						<Nav />
-						<main className="mt-[10rem] sm:w-[65rem] m-auto font-sans px-2">
+						<main className="mt-[7rem] sm:mt-[10rem] sm:max-w-[65rem] m-auto font-sans px-5 lg:px-0">
 							{children}
 						</main>
 					</>
