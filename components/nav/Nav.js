@@ -5,7 +5,7 @@ export default function Nav() {
 				<h1 className="font-logo text-primary text-[2rem] font-black">
 					Recipist
 				</h1>
-				<form action="/api/auth/signout" method="post">
+				<form action="/api/auth/signout" method="get">
 					<button
 						type="submit"
 						className="font-sans text-[0.9rem] font-medium bg-primary hover:bg-accent duration-200 text-background rounded-md px-3 py-2"
