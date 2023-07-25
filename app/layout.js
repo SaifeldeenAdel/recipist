@@ -27,6 +27,8 @@ export const metadata = {
 	title: "Recipist",
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function RootLayout({ children }) {
 	const supabase = createServerComponentClient({ cookies });
 	const {
