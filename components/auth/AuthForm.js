@@ -2,18 +2,20 @@
 import { useState } from "react";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { RiQuestionLine } from "react-icons/ri";
+import { useRouter } from "next/navigation";
 export default function AuthForm() {
+  const router = useRouter()
 	const supabase = createClientComponentClient();
 	const [loading, setLoading] = useState(false);
 	const [email, setEmail] = useState("");
 	const [success, setSuccess] = useState(false);
-
+  
 	const handleLogin = async (email) => {
 		try {
 			setLoading(true);
 			const { data, error } = await supabase.auth.signInWithOtp({
 				email,
-				options: { emailRedirectTo: "http://localhost:3000/api/auth/callback" },
+				options: { emailRedirectTo: `${location.origin}/api/auth/callback`},
 			});
 			if (error) throw error;
 			setSuccess(true);
