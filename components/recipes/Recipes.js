@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 
-export default function () {
+export default function Recipes() {
 	// const [recipes, setRecipes] = useState([]); 
 	const [loading, setLoading] = useState(false);
 	const recipes = [

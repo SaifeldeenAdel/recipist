@@ -1,4 +1,4 @@
-export default function () {
+export default function Nav() {
 	return (
 		<nav className="fixed top-0 w-full flex items-center justify-center h-[4rem] bg-white shadow-md">
 			<div className="flex flex-row justify-between items-center w-[65rem] mx-4">

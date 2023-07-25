@@ -4,6 +4,7 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { RiQuestionLine } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 export default function AuthForm() {
+
   const router = useRouter()
 	const supabase = createClientComponentClient();
 	const [loading, setLoading] = useState(false);
@@ -53,7 +54,7 @@ export default function AuthForm() {
 			</button>
 			<div className="flex flex-row font-medium items-center mt-[-0.2rem] gap-1">
 				<RiQuestionLine className="text-primary text-[1.2rem]" />{" "}
-				<span className="text-[0.8rem]">what's a Magic Link?</span>
+				<span className="text-[0.8rem]">what&apos;s a Magic Link?</span>
 			</div>
 		</div>
 	);

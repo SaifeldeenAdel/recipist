@@ -1,7 +1,7 @@
 import { BiSolidUser, BiTime, BiUser } from "react-icons/bi";
 import { CgBowl} from "react-icons/cg";
 
-export default function ({ recipe }) {
+export default function RecipeCard({ recipe }) {
 	return (
 		<article className="bg-white rounded-lg h-[14rem] border border-primary p-6 hover:drop-shadow-xl duration-200 flex flex-col drop-shadow-lg">
 			<h2 className="text-primary font-semibold text-2xl">{recipe.title}</h2>
