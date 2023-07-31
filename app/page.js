@@ -1,9 +1,12 @@
-import AuthForm from "@/components/auth/AuthForm";
-import Recipes from "@/components/recipes/Recipes";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { FaPlus } from "react-icons/fa";
 
-export const dynamic = 'force-dynamic';
+import AuthForm from "@/components/auth/AuthForm";
+import Recipes from "@/components/recipes/Recipes";
+import Link from "next/link";
+
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
 	const supabase = createServerComponentClient({ cookies });
@@ -29,14 +32,24 @@ export default async function Home() {
 	} else {
 		return (
 			<>
-				<header className="w-full mb-10">
-					<h1 className="font-bold text-primary text-[1.7rem] md:text-[2rem] leading-12">
-						Your Creations
-					</h1>
-					<p className="font-light text-sm md:text-[1.1rem]">
-						Find all of your recipes here, you can also filter your
-						favourites.
-					</p>
+				<header className="w-full mb-8">
+					<div className="flex flex-row justify-between items-end">
+            <div className="flex flex-col">
+              <h1 className="font-bold text-primary text-[1.7rem] md:text-[2rem] leading-12">
+                Your Creations
+              </h1>
+              <p className="font-light text-sm md:text-[1.1rem]">
+                Find all of your recipes here, you can also filter your
+                favourites.
+              </p>
+
+            </div>
+						<Link href="/new" className="p-2 rounded-lg bg-accent flex justify-center items-center ml-3 hover:bg-primary duration-300">
+							<FaPlus className="text-base sm:text-lg text-white" />
+						</Link>
+					</div>
+					<hr className="w-full mt-3 h-[0.2rem] sm:h-[0.1rem] bg-accent" />
+          
 				</header>
 
 				<Recipes />
