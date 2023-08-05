@@ -1,13 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
 import { BiUser } from "react-icons/bi";
+import { FaPlus } from "react-icons/fa";
+
+import Ingredient from "../Ingredients/Ingredient";
 
 export default function NewRecipeForm() {
 	const [title, setTitle] = useState("");
 
-
-  const handleSubmit = () => {
-  }
+	const handleSubmit = () => {};
 
 	return (
 		<form method="post" onSubmit={handleSubmit}>
@@ -60,6 +61,24 @@ export default function NewRecipeForm() {
 				</div>
 			</div>
 			<hr className="hidden sm:block w-full mt-3 h-[0.2rem] sm:h-[0.1rem] bg-accent" />
+
+			<div className="mt-10">
+				<h2 className="text-primary text-[1.2rem] sm:text-[1.5rem]">
+					Ingredients
+				</h2>
+				<div className="grid grid-cols-6 mt-3 w-full sm:w-[30rem] gap-x-5 gap-y-2">
+					<h3 className="text-black opacity-40 font-bold col-span-1">Qty</h3>
+					<h3 className="text-black opacity-40 font-bold col-span-2">Unit</h3>
+					<h3 className="text-black opacity-40 font-bold col-span-3">Name</h3>
+					<Ingredient />
+					<Ingredient />
+					<Ingredient />
+					<Ingredient />
+					<button className="col-span-6 rounded-lg bg-accent py-2 flex justify-center mt-3 hover:bg-primary duration-300">
+						<FaPlus className="text-white text-[1rem] font-bold" />
+					</button>
+				</div>
+			</div>
 
 			<button type="submit">Save!</button>
 		</form>
