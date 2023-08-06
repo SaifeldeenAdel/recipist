@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { BiUser } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 
@@ -8,7 +8,30 @@ import Ingredient from "../Ingredients/Ingredient";
 export default function NewRecipeForm() {
 	const [title, setTitle] = useState("");
 
+	const newIngredient = {
+		quantity: "",
+		unit: "",
+		title: "",
+	};
+	const [ingredients, setIngredients] = useState([newIngredient]);
 	const handleSubmit = () => {};
+
+	const handleAddIngredient = () => {
+		setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+	};
+
+	const handleDeleteIngredient = (index) => {
+		if (ingredients.length > 1) {
+			ingredients.splice(index, 1);
+			console.log(ingredients);
+			setIngredients([...ingredients]);
+		}
+	};
+
+	const handleChangeIngredient = (ingredients) => {
+    console.log(ingredients);
+		setIngredients([...ingredients]);
+	};
 
 	return (
 		<form method="post" onSubmit={handleSubmit}>
@@ -63,23 +86,39 @@ export default function NewRecipeForm() {
 			<hr className="hidden sm:block w-full mt-3 h-[0.2rem] sm:h-[0.1rem] bg-accent" />
 
 			<div className="mt-10">
-				<h2 className="text-primary text-[1.2rem] sm:text-[1.5rem]">
+				<h2 className="text-primary text-[1.3rem] sm:text-[1.5rem]">
 					Ingredients
 				</h2>
-				<div className="grid grid-cols-6 mt-3 w-full sm:w-[30rem] gap-x-5 gap-y-2">
-					<h3 className="text-black opacity-40 font-bold col-span-1">Qty</h3>
+
+				<div className="grid grid-cols-10 mt-3 w-full sm:w-[35rem] gap-x-2 sm:gap-x-4 gap-y-2">
+					<h3 className="text-black opacity-40 font-bold col-span-2">Qty</h3>
 					<h3 className="text-black opacity-40 font-bold col-span-2">Unit</h3>
-					<h3 className="text-black opacity-40 font-bold col-span-3">Name</h3>
-					<Ingredient />
-					<Ingredient />
-					<Ingredient />
-					<Ingredient />
-					<button className="col-span-6 rounded-lg bg-accent py-2 flex justify-center mt-3 hover:bg-primary duration-300">
+					<h3 className="text-black opacity-40 font-bold col-span-5">Name</h3>
+					<h3 className="text-black opacity-40 font-bold col-span-1"></h3>
+
+					{ingredients.map((ingredient, index) => (
+						<Ingredient
+							key={index}
+							index={index}
+							ingredients={ingredients}
+							content={ingredient}
+							handleChangeIngredient={handleChangeIngredient}
+							handleDeleteIngredient={handleDeleteIngredient}
+						/>
+					))}
+
+					<button
+						type="button"
+						onClick={handleAddIngredient}
+						className="col-span-10 rounded-lg bg-accent py-2 flex justify-center mt-3 hover:bg-primary duration-300"
+					>
 						<FaPlus className="text-white text-[1rem] font-bold" />
 					</button>
 				</div>
 			</div>
 
+			<br />
+			<br />
 			<button type="submit">Save!</button>
 		</form>
 	);
