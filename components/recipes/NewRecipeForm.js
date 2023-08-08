@@ -1,5 +1,7 @@
 "use client";
-import { useEffect, useId, useState } from "react";
+import { useState } from "react";
+import uuid from 'react-uuid';
+
 import { BiUser } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 
@@ -8,18 +10,25 @@ import Ingredient from "../Ingredients/Ingredient";
 export default function NewRecipeForm() {
 	const [title, setTitle] = useState("");
 
+  // That new object that's created every time user clicks on plus icon
 	const newIngredient = {
+    id: uuid(),
 		quantity: "",
 		unit: "",
 		title: "",
 	};
+
 	const [ingredients, setIngredients] = useState([newIngredient]);
 	const handleSubmit = () => {};
 
+
+  // Callback for adding an Ingredient
 	const handleAddIngredient = () => {
 		setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    
 	};
 
+  // Callback for deleting an Ingredient
 	const handleDeleteIngredient = (index) => {
 		if (ingredients.length > 1) {
 			ingredients.splice(index, 1);
@@ -28,6 +37,7 @@ export default function NewRecipeForm() {
 		}
 	};
 
+  // Callback for updating an Ingredient
 	const handleChangeIngredient = (ingredients) => {
     console.log(ingredients);
 		setIngredients([...ingredients]);
@@ -98,10 +108,9 @@ export default function NewRecipeForm() {
 
 					{ingredients.map((ingredient, index) => (
 						<Ingredient
-							key={index}
+							key={ingredient.id}
 							index={index}
-							ingredients={ingredients}
-							content={ingredient}
+							ingredientList={ingredients}
 							handleChangeIngredient={handleChangeIngredient}
 							handleDeleteIngredient={handleDeleteIngredient}
 						/>

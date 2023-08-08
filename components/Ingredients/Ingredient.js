@@ -5,21 +5,20 @@ import { FaMinus, FaTrash } from "react-icons/fa";
 
 export default function ({
 	index,
-	ingredients,
-	content,
+	ingredientList,
 	handleChangeIngredient,
 	handleDeleteIngredient,
 }) {
-	const [quantity, setQuantity] = useState(content?.quantity || "");
-	const [unit, setUnit] = useState(content?.unit || "");
-	const [title, setTitle] = useState(content?.title || "");
+	const [quantity, setQuantity] = useState("");
+	const [unit, setUnit] = useState("");
+	const [title, setTitle] = useState("");
 
 	useEffect(() => {
-		ingredients[index].quantity = quantity;
-		ingredients[index].unit = unit;
-		ingredients[index].title = title;
+		ingredientList[index].quantity = quantity;
+		ingredientList[index].unit = unit;
+		ingredientList[index].title = title;
 
-		handleChangeIngredient(ingredients);
+		handleChangeIngredient(ingredientList);
 	}, [quantity, unit, title]);
 
 	return (
