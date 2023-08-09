@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { FaMinus, FaTrash } from "react-icons/fa";
 
-export default function ({
+export default function Ingredient({
 	index,
 	ingredientList,
 	handleChangeIngredient,

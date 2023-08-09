@@ -1,46 +1,68 @@
 "use client";
 import { useState } from "react";
-import uuid from 'react-uuid';
+import uuid from "react-uuid";
 
 import { BiUser } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 
 import Ingredient from "../Ingredients/Ingredient";
+import Instruction from "../Instruction/Instruction";
 
 export default function NewRecipeForm() {
 	const [title, setTitle] = useState("");
 
-  // That new object that's created every time user clicks on plus icon
+	// That new object that's created every time user clicks on plus icon
 	const newIngredient = {
-    id: uuid(),
+		id: uuid(),
 		quantity: "",
 		unit: "",
 		title: "",
 	};
 
-	const [ingredients, setIngredients] = useState([newIngredient]);
-	const handleSubmit = () => {};
-
-
-  // Callback for adding an Ingredient
-	const handleAddIngredient = () => {
-		setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
-    
+	const newInstruction = {
+		id: uuid(),
+		content: "",
 	};
 
-  // Callback for deleting an Ingredient
+	const [ingredients, setIngredients] = useState([newIngredient]);
+	const [instructions, setInstructions] = useState([newInstruction]);
+
+	const handleSubmit = () => {};
+
+	// Callback for adding an Ingredient
+	const handleAddIngredient = () => {
+		setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+	};
+
+	// Callback for deleting an Ingredient
 	const handleDeleteIngredient = (index) => {
 		if (ingredients.length > 1) {
 			ingredients.splice(index, 1);
-			console.log(ingredients);
 			setIngredients([...ingredients]);
 		}
 	};
 
-  // Callback for updating an Ingredient
+	// Callback for updating an Ingredient
 	const handleChangeIngredient = (ingredients) => {
-    console.log(ingredients);
 		setIngredients([...ingredients]);
+	};
+
+	// Callback for adding an Instruction
+	const handleAddInstruction = () => {
+		setInstructions((prevInstructions) => [...prevInstructions, newInstruction]);
+	};
+
+	// Callback for deleting an Instruction
+	const handleDeleteInstruction = (index) => {
+		if (instructions.length > 1) {
+			instructions.splice(index, 1);
+			setInstructions([...instructions]);
+		}
+	};
+
+	// Callback for updating an Instruction
+	const handleChangeInstruction = (instructions) => {
+		setInstructions([...instructions]);
 	};
 
 	return (
@@ -120,6 +142,29 @@ export default function NewRecipeForm() {
 						type="button"
 						onClick={handleAddIngredient}
 						className="col-span-10 rounded-lg bg-accent py-2 flex justify-center mt-3 hover:bg-primary duration-300"
+					>
+						<FaPlus className="text-white text-[1rem] font-bold" />
+					</button>
+				</div>
+			</div>
+			<div className="mt-10">
+				<h2 className="text-primary text-[1.3rem] sm:text-[1.5rem] mb-4">
+					Instructions
+				</h2>
+				<div className="flex flex-col gap-2">
+					{instructions.map((instruction, index) => (
+						<Instruction
+							key={instruction.id}
+							index={index}
+							instructionList={instructions}
+							handleChangeInstruction={handleChangeInstruction}
+							handleDeleteInstruction={handleDeleteInstruction}
+						/>
+					))}
+					<button
+						type="button"
+						onClick={handleAddInstruction}
+						className="p-3 rounded-xl bg-accent hover:bg-primary duration-300 text-white w-10 h-10 sm:w-12 sm:h-12 flex justify-center items-center text-xl font-semibold"
 					>
 						<FaPlus className="text-white text-[1rem] font-bold" />
 					</button>
