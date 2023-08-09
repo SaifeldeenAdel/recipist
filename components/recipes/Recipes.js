@@ -5,50 +5,51 @@ import RecipeCard from "./RecipeCard";
 
 
 export default function Recipes() {
-	// const [recipes, setRecipes] = useState([]);
-	const [loading, setLoading] = useState(false);
-	const recipes = [
-		{
-			userId: 1,
-			id: 1,
-			title: "Monkey Bread",
-			body: "quia et suscipit suscipit recusandae consequuntur",
-		},
-		{
-			userId: 1,
-			id: 2,
-			title: "Apple Pie",
-			body: "est rerum tempore vitae",
-		},
-		{
-			userId: 1,
-			id: 3,
-			title: "Chocolate Babka",
-			body: "est rerum tempore vitae",
-		},
-		{
-			userId: 1,
-			id: 3,
-			title: "Babka",
-			body: "est rerum tempore vitae",
-		},
-	];
-	// useEffect(() => {
-	// 	async function getRecipes() {
-	// 		const res = await fetch("/api/recipes");
-	// 		const json = await res.json();
-	// 		setRecipes(json.recipes);
-	// 		setLoading(false);
-	// 	}
-	// 	getRecipes();
-	// }, []);
+	const [recipes, setRecipes] = useState([]);
+	const [loading, setLoading] = useState(true);
+	// const recipes = [
+	// 	{
+	// 		userId: 1,
+	// 		id: 1,
+	// 		title: "Monkey Bread",
+	// 		body: "quia et suscipit suscipit recusandae consequuntur",
+	// 	},
+	// 	{
+	// 		userId: 1,
+	// 		id: 2,
+	// 		title: "Apple Pie",
+	// 		body: "est rerum tempore vitae",
+	// 	},
+	// 	{
+	// 		userId: 1,
+	// 		id: 3,
+	// 		title: "Chocolate Babka",
+	// 		body: "est rerum tempore vitae",
+	// 	},
+	// 	{
+	// 		userId: 1,
+	// 		id: 3,
+	// 		title: "Babka",
+	// 		body: "est rerum tempore vitae",
+	// 	},
+	// ];
+	useEffect(() => {
+		async function getRecipes() {
+			const res = await fetch("/api/recipes");
+			const json = await res.json();
+      // console.log(json.recipes[0].ingredients);
+			setRecipes(json.recipes);
+			setLoading(false);
+		}
+		getRecipes();
+	}, []);
 
 	if (loading) {
 		return <>Loading</>;
 	} else {
 		return (
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 sm:gap-x-5 sm:gap-y-15 mb-20">
-				{recipes.length == 0 ? (
+				{recipes.length != 0 ? (
 					recipes.map((recipe, index) => (
 						<RecipeCard key={index} recipe={recipe} />
 					))

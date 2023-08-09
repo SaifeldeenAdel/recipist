@@ -22,7 +22,6 @@ export default function Instruction({
 			textareaRef.current.scrollHeight,
 			42
 		)}px`;
-		console.log(textareaRef.current.style.height);
 	}, [instruction]);
 
 	// Running change instruction callback when instruction changes
