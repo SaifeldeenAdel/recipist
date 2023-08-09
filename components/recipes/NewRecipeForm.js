@@ -7,6 +7,8 @@ import { FaPlus } from "react-icons/fa";
 
 import Ingredient from "../Ingredients/Ingredient";
 import Instruction from "../Instruction/Instruction";
+import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function NewRecipeForm() {
 	const [title, setTitle] = useState("");
@@ -117,12 +119,12 @@ export default function NewRecipeForm() {
 			</div>
 			<hr className="hidden sm:block w-full mt-3 h-[0.2rem] sm:h-[0.1rem] bg-accent" />
 
-			<div className="mt-10">
+			<div className="mt-10 bg-secondary w-full sm:w-[35rem] rounded-xl p-4">
 				<h2 className="text-primary text-[1.3rem] sm:text-[1.5rem]">
 					Ingredients
 				</h2>
 
-				<div className="grid grid-cols-10 mt-3 w-full sm:w-[35rem] gap-x-2 sm:gap-x-4 gap-y-2">
+				<div className="grid grid-cols-10 mt-3 gap-x-2 sm:gap-x-4 gap-y-2">
 					<h3 className="text-black opacity-40 font-bold col-span-2">Qty</h3>
 					<h3 className="text-black opacity-40 font-bold col-span-2">Unit</h3>
 					<h3 className="text-black opacity-40 font-bold col-span-5">Name</h3>
@@ -147,7 +149,7 @@ export default function NewRecipeForm() {
 					</button>
 				</div>
 			</div>
-			<div className="mt-10">
+			<div className="mt-10 bg-secondary rounded-xl p-3">
 				<h2 className="text-primary text-[1.3rem] sm:text-[1.5rem] mb-4">
 					Instructions
 				</h2>
@@ -171,9 +173,19 @@ export default function NewRecipeForm() {
 				</div>
 			</div>
 
-			<br />
-			<br />
-			<button type="submit">Save!</button>
+			<div className="my-12 w-full flex flex-row justify-end gap-2 text-[0.8rem] sm:text-base">
+				<Link href={'/'}
+					className="px-3 bg-background border border-accent rounded-lg text-accent py-2 font-semibold hover:bg-primary hover:text-white duration-300"
+				>
+					Cancel
+				</Link>
+				<button
+					type="submit"
+					className="px-5 bg-accent rounded-lg text-white py-2 font-semibold hover:bg-primary duration-300"
+				>
+					Save!
+				</button>
+			</div>
 		</form>
 	);
 }

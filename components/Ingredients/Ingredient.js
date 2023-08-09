@@ -49,7 +49,7 @@ export default function Ingredient({
 				value={title}
 				onChange={(e) => setTitle(e.target.value)}
 				placeholder="AP Flour"
-				className="font-medium col-span-5 bg-background py-2 px-0 focus:ring-0 focus:border-accent outline-0 border-0 placeholder:text-primary placeholder:opacity-40 text-primary border-b-2 border-accent text-[1.1rem]"
+				className="font-medium col-span-5 bg-secondary py-2 px-0 focus:ring-0 focus:border-accent outline-0 border-0 placeholder:text-primary placeholder:opacity-40 text-primary border-b-2 border-accent text-[1.1rem]"
 			/>
 			<div className="flex items-center justify-center">
 				<button

@@ -43,7 +43,7 @@ export default function Instruction({
 				value={instruction}
 				onChange={(e) => setInstruction(e.target.value)}
 				placeholder={"Cream butter and sugar"}
-				className="resize-none overflow-hidden w-full font-medium bg-background py-2 px-0 focus:ring-0 focus:border-accent outline-0 border-0 placeholder:text-primary placeholder:opacity-40 text-primary border-b-2 border-accent text-base sm:text-[1.1rem]"
+				className="resize-none overflow-hidden w-full font-medium bg-secondary py-2 px-0 focus:ring-0 focus:border-accent outline-0 border-0 placeholder:text-primary placeholder:opacity-40 text-primary border-b-2 border-accent text-base sm:text-[1.1rem]"
 			/>
 			<div className="flex items-center justify-center">
 				<button
