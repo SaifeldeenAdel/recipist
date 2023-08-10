@@ -68,8 +68,8 @@ export default function NewRecipeForm() {
 	};
 
 	return (
-		<form method="post" onSubmit={handleSubmit}>
-			<div className="flex flex-col justify-between sm:flex-row">
+		<form method="post" onSubmit={handleSubmit} className="px-2">
+			<div className="flex flex-col justify-between sm:flex-row px-3">
 				<input
 					value={title}
 					required
@@ -78,7 +78,7 @@ export default function NewRecipeForm() {
 					className="text-2xl sm:text-3xl font-sans font-bold placeholder:opacity-20 bg-background border-0 outline-0 focus:ring-0 text-accent placeholder:text-accent p-0"
 					placeholder="Recipe Title"
 				/>
-				<hr className="block sm:hidden w-full mt-3 h-[0.1rem] sm:h-[0.1rem] bg-accent" />
+				<hr className="block sm:hidden w-full mt-3 h-[0.2rem] bg-accent" />
 				<div className="grid grid-cols-3 sm:grid-cols-3 gap-3 lg:m-0 mt-4">
 					<div className="flex flex-row col-span-2 items-center justify-center border border-accent py-0 px-4 sm:pl-4 sm:px-4 sm:py-2 bg-white rounded-xl">
 						<input

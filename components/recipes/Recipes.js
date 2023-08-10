@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import RecipeCard from "./RecipeCard";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
+import RecipeCard from "./RecipeCard";
 
 export default function Recipes() {
 	const [recipes, setRecipes] = useState([]);
@@ -37,7 +39,7 @@ export default function Recipes() {
 		async function getRecipes() {
 			const res = await fetch("/api/recipes");
 			const json = await res.json();
-      // console.log(json.recipes[0].ingredients);
+			// console.log(json.recipes[0].ingredients);
 			setRecipes(json.recipes);
 			setLoading(false);
 		}
@@ -45,10 +47,21 @@ export default function Recipes() {
 	}, []);
 
 	if (loading) {
-		return <>Loading</>;
+		return (
+			<div className="px-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-5 sm:gap-x-5 sm:gap-y-10">
+				<Skeleton
+					baseColor="#ffe3ea"
+					highlightColor="#ffd5de"
+					borderRadius="0.8rem"
+					duration={1}
+					height={"9rem"}
+					width={"100%"}
+				/>
+			</div>
+		);
 	} else {
 		return (
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 sm:gap-x-5 sm:gap-y-15 mb-20">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 sm:gap-x-5 sm:gap-y-15 mb-20 px-5">
 				{recipes.length != 0 ? (
 					recipes.map((recipe, index) => (
 						<RecipeCard key={index} recipe={recipe} />
