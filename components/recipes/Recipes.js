@@ -64,7 +64,7 @@ export default function Recipes() {
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 sm:gap-x-5 sm:gap-y-15 mb-20 px-5">
 				{recipes.length != 0 ? (
 					recipes.map((recipe, index) => (
-						<RecipeCard key={index} recipe={recipe} />
+						<RecipeCard key={recipe.id} recipe={recipe} />
 					))
 				) : (
 					<article className="bg-white rounded-xl h-[8.2rem] sm:h-[11.2rem] border border-primary px-6 py-4 sm:p-6 duration-200 flex flex-col drop-shadow-lg justify-center items-center">
