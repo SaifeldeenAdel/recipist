@@ -10,7 +10,7 @@ export default function Ingredient({
 	handleDeleteIngredient,
 }) {
 	const [quantity, setQuantity] = useState("");
-	const [unit, setUnit] = useState("");
+	const [unit, setUnit] = useState("cups");
 	const [title, setTitle] = useState("");
 
 	useEffect(() => {

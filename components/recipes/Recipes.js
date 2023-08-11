@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+
+import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import RecipeCard from "./RecipeCard";
@@ -35,14 +36,21 @@ export default function Recipes() {
 	// 		body: "est rerum tempore vitae",
 	// 	},
 	// ];
+  async function getRecipes() {
+    const res = await fetch("/api/recipes");
+    const json = await res.json();
+    // console.log(json.recipes[0].ingredients);
+    setRecipes(json.recipes);
+    setLoading(false);
+  }
+
+  const handleDelete = (id) => {
+    setRecipes(prevRecipes => {
+      return prevRecipes.filter(rec => rec.id !== id)
+    })  
+  }
+
 	useEffect(() => {
-		async function getRecipes() {
-			const res = await fetch("/api/recipes");
-			const json = await res.json();
-			// console.log(json.recipes[0].ingredients);
-			setRecipes(json.recipes);
-			setLoading(false);
-		}
 		getRecipes();
 	}, []);
 
@@ -64,7 +72,7 @@ export default function Recipes() {
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 sm:gap-x-5 sm:gap-y-15 mb-20 px-5">
 				{recipes.length != 0 ? (
 					recipes.map((recipe, index) => (
-						<RecipeCard key={recipe.id} recipe={recipe} />
+						<RecipeCard key={recipe.id} recipe={recipe} onDelete={handleDelete} />
 					))
 				) : (
 					<article className="bg-white rounded-xl h-[8.2rem] sm:h-[11.2rem] border border-primary px-6 py-4 sm:p-6 duration-200 flex flex-col drop-shadow-lg justify-center items-center">

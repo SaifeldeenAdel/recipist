@@ -1,17 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import uuid from "react-uuid";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { BiUser } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import Ingredient from "../Ingredients/Ingredient";
 import Instruction from "../Instruction/Instruction";
-import { redirect } from "next/navigation";
-import Link from "next/link";
 
 export default function NewRecipeForm() {
 	const [title, setTitle] = useState("");
+	const [time, setTime] = useState("");
+	const [timeUnit, setTimeUnit] = useState("hours");
+	const [serves, setServes] = useState("");
+	const [error, setError] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	// That new object that's created every time user clicks on plus icon
 	const newIngredient = {
@@ -26,10 +32,39 @@ export default function NewRecipeForm() {
 		content: "",
 	};
 
+	const router = useRouter();
 	const [ingredients, setIngredients] = useState([newIngredient]);
 	const [instructions, setInstructions] = useState([newInstruction]);
 
-	const handleSubmit = () => {};
+	const handleSubmit = async () => {
+		setLoading(true);
+		try {
+			const res = await fetch("/api/saveRecipe", {
+				method: "POST", // or 'PUT'
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					title: title,
+					time: time,
+					time_unit: timeUnit,
+					serves: serves,
+					ingredients: ingredients,
+					instructions: instructions,
+				}),
+			});
+      const data = await res.json()
+			if (data.status == 200 && res.ok) {
+				router.push("/");
+			} else {
+        console.log(data.error)
+				setLoading(false);
+				setError(true);
+			}
+		} catch (e) {
+			console.log(e.message || e.description);
+		}
+	};
 
 	// Callback for adding an Ingredient
 	const handleAddIngredient = () => {
@@ -83,17 +118,23 @@ export default function NewRecipeForm() {
 					<div className="flex flex-row col-span-2 items-center justify-center border border-accent py-0 px-4 sm:pl-4 sm:px-4 sm:py-2 bg-white rounded-xl">
 						<input
 							required
+							value={time}
+							onChange={(e) => setTime(e.target.value)}
 							type="number"
 							min={1}
 							className="text-lg lg:text-xl font-sans mb-1 w-12 font-bold placeholder:opacity-20 bg-none border-0 outline-0 focus:ring-0 text-accent placeholder:text-accent p-0"
 							placeholder="5"
 							name="time"
 						/>
-						<select className="font-bold text-primary text-base border-0 outline-none p-0 focus:ring-0">
-							<option className="p-2" value="Hours">
+						<select
+							value={timeUnit}
+							onChange={(e) => setTimeUnit(e.target.value)}
+							className="font-bold text-primary text-base border-0 outline-none p-0 focus:ring-0"
+						>
+							<option className="p-2" value="hours">
 								Hours
 							</option>
-							<option className="p-2" value="Minutes">
+							<option className="p-2" value="minutes">
 								Minutes
 							</option>
 						</select>
@@ -101,8 +142,10 @@ export default function NewRecipeForm() {
 
 					<div className="flex flex-row col-span-1 justify-center items-center border border-accent bg-white rounded-xl">
 						<input
-							type="number"
 							required
+							value={serves}
+							onChange={(e) => setServes(e.target.value)}
+							type="number"
 							min={1}
 							className="text-xl font-sans text-center mb-1 w-12 font-bold placeholder:opacity-20 bg-none border-0 outline-0 focus:ring-0 text-primary placeholder:text-accent p-0"
 							placeholder="10"
@@ -174,7 +217,8 @@ export default function NewRecipeForm() {
 			</div>
 
 			<div className="my-12 w-full flex flex-row justify-end gap-2 text-[0.8rem] sm:text-base">
-				<Link href={'/'}
+				<Link
+					href={"/"}
 					className="px-3 bg-background border border-accent rounded-lg text-accent py-2 font-semibold hover:bg-primary hover:text-white duration-300"
 				>
 					Cancel
@@ -183,7 +227,7 @@ export default function NewRecipeForm() {
 					type="submit"
 					className="px-5 bg-accent rounded-lg text-white py-2 font-semibold hover:bg-primary duration-300"
 				>
-					Save!
+					{!loading ? "Save!" : <BeatLoader size={8} color={"white"} />}
 				</button>
 			</div>
 		</form>
