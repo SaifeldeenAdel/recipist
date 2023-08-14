@@ -110,7 +110,7 @@ export default function NewRecipeForm() {
 					required
 					onChange={(e) => setTitle(e.target.value)}
 					type="text"
-					className="text-2xl sm:text-3xl font-sans font-bold placeholder:opacity-20 bg-background border-0 outline-0 focus:ring-0 text-accent placeholder:text-accent p-0"
+					className="text-2xl sm:text-3xl font-sans font-bold placeholder:opacity-20 bg-background border-0 outline-0 focus:ring-0 text-accent placeholder:text-accent p-0 sm:w-[70%]"
 					placeholder="Recipe Title"
 				/>
 				<hr className="block sm:hidden w-full mt-3 h-[0.2rem] bg-accent" />
