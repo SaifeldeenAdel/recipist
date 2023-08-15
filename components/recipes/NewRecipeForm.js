@@ -53,11 +53,11 @@ export default function NewRecipeForm() {
 					instructions: instructions,
 				}),
 			});
-      const data = await res.json()
+			const data = await res.json();
 			if (data.status == 200 && res.ok) {
 				router.push("/");
 			} else {
-        console.log(data.error)
+				console.log(data.error);
 				setLoading(false);
 				setError(true);
 			}
@@ -115,7 +115,7 @@ export default function NewRecipeForm() {
 				/>
 				<hr className="block sm:hidden w-full mt-3 h-[0.2rem] bg-accent" />
 				<div className="grid grid-cols-3 sm:grid-cols-3 gap-3 lg:m-0 mt-4">
-					<div className="flex flex-row col-span-2 items-center justify-center border border-accent py-0 px-4 sm:pl-4 sm:px-4 sm:py-2 bg-white rounded-xl">
+					<div className="flex flex-row col-span-2 items-center justify-center border border-accent py-0 px-4 sm:pl-4 sm:px-0 sm:py-2 bg-white rounded-xl">
 						<input
 							required
 							value={time}

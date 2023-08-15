@@ -30,7 +30,7 @@ export default function RecipeCard({ recipe, onDelete }) {
 				<hr className="w-full mt-3 bg-accent h-[0.05rem] block" />
 			</h2>
 
-			<button className="absolute right-2 top-2 p-2 rounded-lg hover:bg-secondary-accent duration-300" onClick={handleDelete}>
+			<button className="absolute right-2 top-2 p-2 rounded-full hover:bg-secondary-accent duration-300" onClick={handleDelete}>
 				<BiTrash className="text-lg text-accent" />
 			</button>
 
