@@ -14,9 +14,9 @@ module.exports = {
 				sans2: ["var(--montserrat)"],
 			},
 			colors: {
-				background: "#fef6f8",
+				background: "#fffdf9",
 				primary: "#b61249",
-				secondary: "#ffeff2",
+				secondary: "#fcf5f6",
 				"secondary-accent": "#ffd5de",
 				accent: "#831237",
 				dark: "#050505",

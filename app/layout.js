@@ -5,6 +5,10 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Nav from "@/components/nav/Nav";
 
+import blobscene from "../public/blobscene.svg";
+import blobscene2 from "../public/blobscene2.svg";
+import Image from "next/image";
+
 const montserrat = Montserrat({
 	subsets: ["latin"],
 	weight: ["variable"],
@@ -27,7 +31,7 @@ export const metadata = {
 	title: "Recipist",
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function RootLayout({ children }) {
 	const supabase = createServerComponentClient({ cookies });
@@ -38,8 +42,16 @@ export default async function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body
-				className={`${montserrat.variable} ${raleway.variable} ${caveat.variable} bg-background`}
+				className={`${montserrat.variable} ${raleway.variable} ${caveat.variable}`}
 			>
+					<div className="fixed -z-[900] h-full w-full top-0">
+						<Image
+							src={blobscene2}
+							layout="fill"
+							objectFit="cover"
+              className="min-w-[70rem]"
+						/>
+					</div>
 				{user ? (
 					<>
 						<Nav />
