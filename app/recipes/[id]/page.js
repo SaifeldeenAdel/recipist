@@ -6,10 +6,8 @@ export default function View({ params }) {
 	const [loading, setLoading] = useState(true);
 	const [recipe, setRecipe] = useState({});
 	const fetchRecipe = async () => {
-		console.log("Running");
 		const res = await fetch(`/api/getRecipe?id=${params.id}`);
 		const recipe = await res.json();
-    console.log(recipe);
 		setRecipe(recipe.recipe[0]);
 		setLoading(false);
 	};

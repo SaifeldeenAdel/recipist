@@ -13,7 +13,6 @@ export default function RecipeCard({ recipe, onDelete }) {
 			});
 			const data = await res.json();
 			if (data.status == 200 && res.ok) {
-				console.log("Deleted!");
 				onDelete(recipe.id);
 			} else {
 				console.log(data.error);
