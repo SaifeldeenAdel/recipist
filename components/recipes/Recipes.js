@@ -10,7 +10,7 @@ import RecipeCard from "./RecipeCard";
 export default function Recipes() {
 	const [recipes, setRecipes] = useState([]);
 	const [loading, setLoading] = useState(true);
-  
+
   async function getRecipes() {
     const res = await fetch("/api/recipes");
     const json = await res.json();
@@ -43,7 +43,7 @@ export default function Recipes() {
 		);
 	} else {
 		return (
-			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-5 sm:gap-x-5 sm:gap-y-15 mb-20 px-5">
+			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-5 sm:gap-x-5 sm:gap-y-10 mb-20 px-5 sm:px-2">
 				{recipes.length != 0 ? (
 					recipes.map((recipe, index) => (
 						<RecipeCard key={recipe.id} recipe={recipe} onDelete={handleDelete} />

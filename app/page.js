@@ -32,7 +32,7 @@ export default async function Home() {
 	} else {
 		return (
 			<>
-				<header className="w-full mb-8 px-5">
+				<header className="w-full mb-8 px-5 sm:px-2">
 					<div className="flex flex-row justify-between items-end">
             <div className="flex flex-col">
               <h1 className="font-bold text-primary text-[1.7rem] md:text-[2rem] leading-12">

@@ -23,7 +23,7 @@ export default function RecipeCard({ recipe, onDelete }) {
 	};
 
 	return (
-		<article className="bg-white rounded-xl border border-primary px-6 py-4 sm:p-6 duration-200 flex flex-col gap-2 sm:gap-2 drop-shadow-lg">
+		<article className="bg-white rounded-xl border border-primary px-6 py-3 sm:p-6 duration-200 flex flex-col gap-1 sm:gap-2 drop-shadow-lg">
 			<h2 className="text-primary font-semibold text-[1.3rem] sm:text-2xl w-[calc(90%)] whitespace-nowrap text-ellipsis h-11 sm:h-14 overflow-hidden">
 				{recipe.title}
 				<hr className="w-full mt-3 bg-accent h-[0.05rem] block" />
