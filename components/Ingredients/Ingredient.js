@@ -24,33 +24,34 @@ export default function Ingredient({
 	return (
 		<>
 			<input
+				type="text"
+				required
+				value={title}
+				onChange={(e) => setTitle(e.target.value)}
+				placeholder="AP Flour"
+				className="font-medium col-span-5 bg-secondary py-1 sm:py-2 px-0 focus:ring-0 focus:border-accent outline-0 border-0 placeholder:text-primary placeholder:opacity-40 text-primary border-b-2 border-accent text-base sm:text-[1.1rem]"
+			/>
+			<input
 				type="number"
 				required
 				value={quantity}
 				onChange={(e) => setQuantity(e.target.value)}
-				placeholder="1.24"
+				placeholder="150"
+				step=".01"
 				min={0}
-				className="font-bold col-span-2 px-2 py-0 bg-secondary-accent rounded-lg  border-0 text-accent placeholder:text-accent placeholder:opacity-40 focus:ring-0 text-[1rem] sm:text-[1.1rem]"
+				className="font-bold col-span-2 px-2 py-0 bg-secondary-accent rounded-lg  border-0 text-accent placeholder:text-accent placeholder:opacity-40 focus:ring-0 text-base sm:text-[1.1rem]"
 			/>
 
 			<select
 				value={unit}
 				onChange={(e) => setUnit(e.target.value)}
-				className="font-bold col-span-2 px-2 py-0 bg-secondary-accent rounded-lg border-0 text-accent placeholder:text-accent placeholder:opacity-40 focus:ring-0 text-[1rem] sm:text-[1.1rem]"
+				className="font-bold col-span-2 px-2 py-0 bg-secondary-accent rounded-lg border-0 text-accent placeholder:text-accent placeholder:opacity-40 focus:ring-0 text-base sm:text-[1.1rem]"
 			>
 				<option value="cups">cups</option>
 				<option value="grams">grams</option>
 				<option value="tbsps">tbsps</option>
 				<option value="tsps">tsps</option>
 			</select>
-			<input
-				type="text"
-				required
-				value={title}
-				onChange={(e) => setTitle(e.target.value)}
-				placeholder="AP Flour"
-				className="font-medium col-span-5 bg-secondary py-2 px-0 focus:ring-0 focus:border-accent outline-0 border-0 placeholder:text-primary placeholder:opacity-40 text-primary border-b-2 border-accent text-[1.1rem]"
-			/>
 			<div className="flex items-center justify-center">
 				<button
 					type="button"

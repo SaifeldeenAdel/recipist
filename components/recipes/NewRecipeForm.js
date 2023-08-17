@@ -168,9 +168,9 @@ export default function NewRecipeForm() {
 				</h2>
 
 				<div className="grid grid-cols-10 mt-3 gap-x-2 sm:gap-x-4 gap-y-2">
+					<h3 className="text-black opacity-40 font-bold col-span-5">Name</h3>
 					<h3 className="text-black opacity-40 font-bold col-span-2">Qty</h3>
 					<h3 className="text-black opacity-40 font-bold col-span-2">Unit</h3>
-					<h3 className="text-black opacity-40 font-bold col-span-5">Name</h3>
 					<h3 className="text-black opacity-40 font-bold col-span-1"></h3>
 
 					{ingredients.map((ingredient, index) => (
