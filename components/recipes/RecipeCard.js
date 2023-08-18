@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BiTime, BiUser } from "react-icons/bi";
 import { BiTrash } from "react-icons/bi";
-import { HiHeart, HiOutlineHeart, HiPencil } from "react-icons/hi";
+import { HiPencil } from "react-icons/hi";
 
 export default function RecipeCard({ recipe, onDelete }) {
 	const handleDelete = async (e) => {
@@ -59,9 +59,9 @@ export default function RecipeCard({ recipe, onDelete }) {
 				</div> */}
 			</div>
 			<div className="flex flex-row gap-2 justify-end items-center mt-1 sm:mt-0 absolute right-4 bottom-[-20px]">
-				<button className="h-9 w-9 sm:h-11 sm:w-11 flex justify-center items-center bg-accent rounded-full duration-300 hover:bg-primary drop-shadow-lg">
+				<Link href={`/edit/${recipe.id}`} className="h-9 w-9 sm:h-11 sm:w-11 flex justify-center items-center bg-accent rounded-full duration-300 hover:bg-primary drop-shadow-lg">
 					<HiPencil className="text-white text-base sm:text-[1.3rem]" />
-				</button>
+				</Link>
 				<Link
 					href={`/recipes/${recipe.id}`}
 					className="h-9 w-[4.5rem] sm:h-11 sm:w-20 drop-shadow-lg font-medium flex justify-center items-center bg-accent text-white rounded-full hover:bg-primary duration-300 text-sm sm:text-base"

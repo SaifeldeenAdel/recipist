@@ -10,7 +10,7 @@ export default function Instruction({
 	handleChangeInstruction,
 	handleDeleteInstruction,
 }) {
-	const [instruction, setInstruction] = useState("");
+	const [instruction, setInstruction] = useState(instructionList[index].content);
 
 	// For resizing textarea based on input
 	const textareaRef = useRef(null);

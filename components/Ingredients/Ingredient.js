@@ -9,9 +9,9 @@ export default function Ingredient({
 	handleChangeIngredient,
 	handleDeleteIngredient,
 }) {
-	const [quantity, setQuantity] = useState("");
-	const [unit, setUnit] = useState("cups");
-	const [title, setTitle] = useState("");
+	const [quantity, setQuantity] = useState(ingredientList[index].quantity);
+	const [unit, setUnit] = useState(ingredientList[index].unit);
+	const [title, setTitle] = useState(ingredientList[index].title);
 
 	useEffect(() => {
 		ingredientList[index].quantity = quantity;
