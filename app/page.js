@@ -14,6 +14,7 @@ export default async function Home() {
 		data: { user },
 	} = await supabase.auth.getUser();
 
+
 	if (!user) {
 		return (
 			<main className="flex flex-col h-[100vh] justify-center items-center">
@@ -34,22 +35,23 @@ export default async function Home() {
 			<>
 				<header className="w-full mb-8 px-5 sm:px-2">
 					<div className="flex flex-row justify-between items-end">
-            <div className="flex flex-col">
-              <h1 className="font-bold text-primary text-[1.7rem] md:text-[2rem] leading-12">
-                Your Creations
-              </h1>
-              <p className="font-light text-sm md:text-[1.1rem]">
-                Find all of your recipes here, you can also filter your
-                favourites.
-              </p>
-
-            </div>
-						<Link href="/new" className="p-2 rounded-lg bg-accent flex justify-center items-center ml-3 hover:bg-primary duration-300">
+						<div className="flex flex-col">
+							<h1 className="font-bold text-primary text-[1.7rem] md:text-[2rem] leading-12">
+								Your Creations
+							</h1>
+							<p className="font-light text-sm md:text-[1.1rem]">
+								Find all of your recipes here, you can also filter your
+								favourites.
+							</p>
+						</div>
+						<Link
+							href="/new"
+							className="p-2 rounded-lg bg-accent flex justify-center items-center ml-3 hover:bg-primary duration-300"
+						>
 							<FaPlus className="text-base sm:text-lg text-white" />
 						</Link>
 					</div>
 					<hr className="w-full mt-3 h-[0.2rem] sm:h-[0.1rem] bg-accent" />
-          
 				</header>
 
 				<Recipes />

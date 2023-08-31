@@ -47,9 +47,10 @@ export default async function RootLayout({ children }) {
 					<div className="fixed -z-[900] h-full w-full top-0">
 						<Image
 							src={blobscene2}
-							layout="fill"
+              fill
 							objectFit="cover"
               className="min-w-[70rem]"
+              alt="Blob-background"
 						/>
 					</div>
 				{user ? (

@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { BiUser } from "react-icons/bi";
 
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
 export default function View({ params }) {
 	const [loading, setLoading] = useState(true);
 	const [recipe, setRecipe] = useState({});
@@ -72,7 +75,28 @@ export default function View({ params }) {
 		fetchRecipe();
 	}, []);
 	if (loading) {
-		return <>Loading</>;
+		return (
+			<SkeletonTheme
+				baseColor="#ffe3ea"
+				highlightColor="#ffd5de"
+				borderRadius="0.8rem"
+				duration={1}
+			>
+				<div className="flex flex-col gap-6 px-5 sm:px-0">
+					<div className="w-full sm:w-[25rem]">
+						<Skeleton height={"3rem"} width={"90%"} />
+					</div>
+
+					<div className="w-full sm:w-[25rem]">
+						<Skeleton height={"20rem"} width={"100%"} />
+					</div>
+
+					<div className="w-full">
+						<Skeleton height={"15rem"} width={"100%"} />
+					</div>
+				</div>
+			</SkeletonTheme>
+		);
 	} else {
 		return (
 			<>
@@ -124,7 +148,10 @@ export default function View({ params }) {
 						</h2>
 						<div className="text-base sm:text-lg px-3 flex flex-col gap-3 sm:gap-2 my-4">
 							{recipe.instructions.map((instruction, index) => (
-								<div className="flex flex-row items-center gap-3" key={instruction.id}>
+								<div
+									className="flex flex-row items-center gap-3"
+									key={instruction.id}
+								>
 									<div className="p-2 rounded-xl bg-accent text-white h-10 sm:w-10 sm:h-10 flex justify-center items-center text-xl font-semibold">
 										<span className="mb-1">{index + 1}</span>
 									</div>
