@@ -40,7 +40,7 @@ export default async function Home() {
 								Your Creations
 							</h1>
 							<p className="font-light text-sm md:text-[1.1rem]">
-								Find all of your recipes here, you can also filter your
+								Find all of your recipes here, soon you'll be able to filter your
 								favourites.
 							</p>
 						</div>
