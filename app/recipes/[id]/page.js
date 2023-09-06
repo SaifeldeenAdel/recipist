@@ -15,65 +15,10 @@ export default function View({ params }) {
 		setLoading(false);
 	};
 
-	// const recipe = {
-	// 	id: "8f8cdad3-4e4a-4fe8-91eb-149151646e34",
-	// 	created_at: "2023-08-14T06:31:39.29472+00:00",
-	// 	title: "Caramel Sauce",
-	// 	time: 30,
-	// 	time_unit: "minutes",
-	// 	serves: 4,
-	// 	favourite: false,
-	// 	creator: "5f0979c0-1029-46fe-b6df-6859f42a710b",
-	// 	ingredients: [
-	// 		{
-	// 			id: "db875549-00b0-cb66-830e-6ee8532171bc",
-	// 			unit: "grams",
-	// 			title: "Sugar",
-	// 			quantity: "200",
-	// 		},
-	// 		{
-	// 			id: "b065fa17-d474-dee6-f261-8f68a33cb146",
-	// 			unit: "grams",
-	// 			title: "Glucose",
-	// 			quantity: "80",
-	// 		},
-	// 		{
-	// 			id: "40b546a7-1230-431d-a8fd-f2b6357c424d",
-	// 			unit: "grams",
-	// 			title: "Cream",
-	// 			quantity: "85",
-	// 		},
-	// 		{
-	// 			id: "ae7942ba-c7ee-b866-05bd-b4daf5d0667f",
-	// 			unit: "grams",
-	// 			title: "Butter, softened to the melted bricks",
-	// 			quantity: "60",
-	// 		},
-	// 	],
-	// 	instructions: [
-	// 		{
-	// 			id: "f7f96b71-b6b2-be9a-a70e-2fb421d464b0",
-	// 			content: "Place thin layer of sugar in pan with glucose and melt",
-	// 		},
-	// 		{
-	// 			id: "35745919-74b2-2559-bd5c-7c065254987e",
-	// 			content:
-	// 				"Keep adding sugar, quarter of cup at a time. Stir to make sure it's all melted",
-	// 		},
-	// 		{
-	// 			id: "922d104b-426e-90d8-b7fa-3a21f04c7495",
-	// 			content: "Once amber, take off heat and add in butter ",
-	// 		},
-	// 		{
-	// 			id: "79f4ef0a-251c-6c6f-3f6b-3c71109bf51f",
-	// 			content: "Then add cream and stir until smooth and store in a jar",
-	// 		},
-	// 	],
-	// };
-
 	useEffect(() => {
 		fetchRecipe();
 	}, []);
+  
 	if (loading) {
 		return (
 			<SkeletonTheme

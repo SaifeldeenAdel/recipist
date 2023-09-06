@@ -9,22 +9,9 @@ export default async function Edit({ params }) {
 		data: { user },
 	} = await supabase.auth.getUser();
 
-  
 	if (!user) {
     redirect("/");
 	} else {
-    
-    let recipe, error;
-		try {
-			({ data: recipe, error } = await supabase
-				.from("Recipes")
-				.select("*")
-				.eq("id", params.id));
-
-		} catch (e) {
-      console.log(e.message || e.description)
-      redirect('/')
-    }
-		return <EditRecipeForm recipe={recipe[0]} />;
+		return <EditRecipeForm params={params} />;
 	}
 }

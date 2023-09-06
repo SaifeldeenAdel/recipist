@@ -16,14 +16,13 @@ export default function NewRecipeForm() {
 	const [time, setTime] = useState("");
 	const [timeUnit, setTimeUnit] = useState("hours");
 	const [serves, setServes] = useState("");
-	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(false);
 
 	// That new object that's created every time user clicks on plus icon
 	const newIngredient = {
 		id: uuid(),
 		quantity: "",
-		unit: "",
+		unit: "cups",
 		title: "",
 	};
 
@@ -36,33 +35,47 @@ export default function NewRecipeForm() {
 	const [ingredients, setIngredients] = useState([newIngredient]);
 	const [instructions, setInstructions] = useState([newInstruction]);
 
-	const handleSubmit = async () => {
-		setLoading(true);
-		try {
-			const res = await fetch("/api/saveRecipe", {
-				method: "POST", // or 'PUT'
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					title: title,
-					time: time,
-					time_unit: timeUnit,
-					serves: serves,
-					ingredients: ingredients,
-					instructions: instructions,
-				}),
-			});
-			const data = await res.json();
-			if (data.status == 200 && res.ok) {
-				router.push("/");
-			} else {
-				console.log(data.error);
-				setLoading(false);
-				setError(true);
+	const validateForm = () => {
+		const invalidIns = instructions.some((i) => i.content == "");
+		const invalidIng = ingredients.some(
+			(i) => i.quantity == "" || i.unit == "" || i.title == ""
+		);
+		if (title == "" || time == "" || serves == "" || invalidIns || invalidIng) {
+			return false;
+		}
+		return true;
+	};
+
+	const handleSubmit = async (e) => {
+		if (validateForm()) {
+			e.preventDefault();
+			setLoading(true);
+			try {
+				const res = await fetch("/api/saveRecipe", {
+					method: "POST", // or 'PUT'
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						title: title,
+						time: time,
+						time_unit: timeUnit,
+						serves: serves,
+						ingredients: ingredients,
+						instructions: instructions,
+					}),
+				});
+				const data = await res.json();
+				if (data.status == 200 && res.ok) {
+					router.push("/");
+				} else {
+					console.log(data.error);
+					setLoading(false);
+					setError(true);
+				}
+			} catch (e) {
+				console.log(e.message || e.description);
 			}
-		} catch (e) {
-			console.log(e.message || e.description);
 		}
 	};
 
@@ -103,7 +116,7 @@ export default function NewRecipeForm() {
 	};
 
 	return (
-		<form method="post" onSubmit={handleSubmit} className="px-2">
+		<form className="px-2">
 			<div className="flex flex-col justify-between sm:flex-row px-3">
 				<input
 					value={title}
@@ -192,7 +205,7 @@ export default function NewRecipeForm() {
 					</button>
 				</div>
 			</div>
-			<div className="mt-10 bg-secondary rounded-xl p-3">
+			<div className="mt-7 bg-secondary rounded-xl p-3">
 				<h2 className="text-primary text-[1.3rem] sm:text-[1.5rem] mb-4">
 					Instructions
 				</h2>
@@ -225,6 +238,7 @@ export default function NewRecipeForm() {
 				</Link>
 				<button
 					type="submit"
+					onClick={handleSubmit}
 					className="px-5 bg-accent rounded-lg text-white py-2 font-semibold hover:bg-primary duration-300"
 				>
 					{!loading ? "Save!" : <BeatLoader size={8} color={"white"} />}

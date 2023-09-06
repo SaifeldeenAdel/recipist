@@ -7,7 +7,6 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req) {
 	const supabase = createRouteHandlerClient({ cookies });
-	console.log(cookies);
 	const { searchParams } = new URL(req.url);
 	const code = searchParams.get("code");
 	if (code) {
