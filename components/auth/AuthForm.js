@@ -4,19 +4,18 @@ import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { RiQuestionLine } from "react-icons/ri";
 import { useRouter } from "next/navigation";
 export default function AuthForm() {
-
-  const router = useRouter()
+	const router = useRouter();
 	const supabase = createClientComponentClient();
 	const [loading, setLoading] = useState(false);
 	const [email, setEmail] = useState("");
 	const [success, setSuccess] = useState(false);
-  
+
 	const handleLogin = async (email) => {
 		try {
 			setLoading(true);
 			const { data, error } = await supabase.auth.signInWithOtp({
 				email,
-				options: { emailRedirectTo: `${location.origin}/api/auth/callback`},
+				options: { emailRedirectTo: `${location.origin}/api/auth/callback` },
 			});
 			if (error) throw error;
 			setSuccess(true);
@@ -52,9 +51,15 @@ export default function AuthForm() {
 					? "Check your Email!"
 					: "Send Magic Link"}
 			</button>
-			<div className="flex flex-row font-medium items-center mt-[-0.2rem] gap-1">
-				<RiQuestionLine className="text-primary text-[1.2rem]" />{" "}
-				<span className="text-[0.8rem]">what&apos;s a Magic Link?</span>
+
+			<div class="group">
+					<div className="flex flex-row font-medium items-center mt-[-0.2rem] gap-1 hover:cursor-default">
+						<RiQuestionLine className="text-primary text-[1.2rem]" />{" "}
+						<span className="text-[0.8rem]">what&apos;s a Magic Link?</span>
+					</div>
+					<span class="absolute z-50 hidden p-3 px-6 py-2 mt-4 -ml-[5rem] text-sm  text-left bg-secondary-accent rounded tooltip-text group-hover:block max-w-xs">
+						By clicking "Send Magic L", you will receive an email that contains a link back to Recipist but this time, you'll be signed in. <b>Make sure to click the link on the same device you're on now.</b>
+					</span>
 			</div>
 		</div>
 	);
