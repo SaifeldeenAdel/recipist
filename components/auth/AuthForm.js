@@ -58,7 +58,7 @@ export default function AuthForm() {
 						<span className="text-[0.8rem]">what&apos;s a Magic Link?</span>
 					</div>
 					<span class="absolute z-50 hidden p-3 px-6 py-2 mt-4 -ml-[5rem] text-sm  text-left bg-secondary-accent rounded tooltip-text group-hover:block max-w-xs">
-						By clicking "Send Magic L", you will receive an email that contains a link back to Recipist but this time, you&apos;ll be signed in. <b>Make sure to click the link on the same device you&apos;re on now.</b>
+						By clicking &quot;Send Magic L&quot;, you will receive an email that contains a link back to Recipist but this time, you&apos;ll be signed in. <b>Make sure to click the link on the same device you&apos;re on now.</b>
 					</span>
 			</div>
 		</div>
