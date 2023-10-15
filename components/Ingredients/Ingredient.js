@@ -47,6 +47,7 @@ export default function Ingredient({
 				onChange={(e) => setUnit(e.target.value)}
 				className="font-bold col-span-2 px-2 py-0 bg-secondary-accent rounded-lg border-0 text-accent placeholder:text-accent placeholder:opacity-40 focus:ring-0 text-base sm:text-[1.1rem]"
 			>
+				<option value="--">--</option>
 				<option value="cups">cups</option>
 				<option value="grams">grams</option>
 				<option value="tbsps">tbsps</option>

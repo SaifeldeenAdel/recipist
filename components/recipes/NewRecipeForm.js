@@ -22,7 +22,7 @@ export default function NewRecipeForm() {
 	const newIngredient = {
 		id: uuid(),
 		quantity: "",
-		unit: "cups",
+		unit: "--",
 		title: "",
 	};
 

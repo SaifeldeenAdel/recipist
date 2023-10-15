@@ -12,19 +12,19 @@ import Ingredient from "../Ingredients/Ingredient";
 import Instruction from "../Instruction/Instruction";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-export default function EditRecipeForm({params}) {
+export default function EditRecipeForm({ params }) {
 	const [title, setTitle] = useState("");
 	const [time, setTime] = useState("");
 	const [timeUnit, setTimeUnit] = useState("hours");
 	const [serves, setServes] = useState("");
-  const [submitLoading, setSubmitLoading] = useState(false)
+	const [submitLoading, setSubmitLoading] = useState(false);
 	const [loading, setLoading] = useState(true);
 
 	// That new object that's created every time user clicks on plus icon
 	const newIngredient = {
 		id: uuid(),
 		quantity: "",
-		unit: "cups",
+		unit: "--",
 		title: "",
 	};
 
@@ -289,7 +289,11 @@ export default function EditRecipeForm({params}) {
 						onClick={handleSubmit}
 						className="px-5 bg-accent rounded-lg text-white py-2 font-semibold hover:bg-primary duration-300"
 					>
-						{!submitLoading ? "Save!" : <BeatLoader size={8} color={"white"} />}
+						{!submitLoading ? (
+							"Save!"
+						) : (
+							<BeatLoader size={8} color={"white"} />
+						)}
 					</button>
 				</div>
 			</form>

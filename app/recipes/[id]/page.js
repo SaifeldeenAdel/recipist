@@ -18,7 +18,7 @@ export default function View({ params }) {
 	useEffect(() => {
 		fetchRecipe();
 	}, []);
-  
+
 	if (loading) {
 		return (
 			<SkeletonTheme
@@ -64,13 +64,13 @@ export default function View({ params }) {
 							Ingredients
 						</h2>
 						<div className="flex flex-row my-5 gap-2 text-lg px-5">
-							<div className="gap-2 flex flex-col border-r pr-4 border-r-black">
+							<div className="gap-2 flex flex-col border-r pr-4 border-r-black justify-end">
 								{recipe.ingredients.map((ingredient, index) => (
 									<div
 										className="text-right font-bold"
 										key={ingredient.id}
 									>
-										{ingredient.quantity} {ingredient.unit}
+										{ingredient.quantity} {ingredient.unit == "--" ? "" : ingredient.unit}
 									</div>
 								))}
 							</div>
