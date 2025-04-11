@@ -26,6 +26,7 @@ export async function GET(req){
 	return NextResponse.json({ status: 200, recipe: recipe });
 }
 
+
 export async function PUT(req) {
 	const supabase = createRouteHandlerClient({ cookies });
 	try {
