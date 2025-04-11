@@ -10,7 +10,7 @@ export async function GET(req){
   let recipe, error;
 	try {
 		({ data: recipe, error } = await supabase
-			.from("Recipes")
+			.from("recipes")
 			.select("*")
 			.eq("id", id));
 
@@ -31,7 +31,7 @@ export async function PUT(req) {
 	try {
 		const body = await req.json();
 		const { error } = await supabase
-			.from("Recipes")
+			.from("recipes")
 			.update(body)
 			.eq("id", body.id);
 		if (error) {

@@ -8,8 +8,13 @@ export async function POST(req) {
 	const supabase = createRouteHandlerClient({ cookies });
 	try {
 		const data = await req.json();
-		const { recipe, error } = await supabase.from("Recipes").insert(data);
+		const { recipe, error } = await supabase.from("recipes").insert(data);
+    
 		if (error) {
+      console.log(error.description || error.message);
+      
+      console.log(error);
+      
       return NextResponse.json({error: "error from supabase", status: 500})
 
 		}

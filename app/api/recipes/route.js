@@ -7,7 +7,10 @@ export async function GET(req){
 	const supabase = createRouteHandlerClient({ cookies });
   let recipes, error;
   try {
-    ({data : recipes, error} = await supabase.from('Recipes').select('*').order('created_at', { ascending: false }));
+    ({data : recipes, error} = await supabase.from('recipes').select('*').order('created_at', { ascending: false }));
+    console.log(recipes, error.message);
+    
+    
     if(error){
       throw error;
     }
@@ -15,5 +18,5 @@ export async function GET(req){
   } catch (error) {
     console.log(error.description || error.message);
   }
-  return NextResponse.json({recipes})
+  return NextResponse.json({ recipes: recipes ?? [] });
 }

@@ -7,7 +7,7 @@ export async function DELETE(req) {
 	const supabase = createRouteHandlerClient({ cookies });
 	try {
     const data = await req.json()
-		const { error } = await supabase.from("Recipes").delete().eq("id", data.id);
+		const { error } = await supabase.from("recipes").delete().eq("id", data.id);
 		if (error) {
 			return NextResponse.json({ error: "error in database", status: 500 });
 		}

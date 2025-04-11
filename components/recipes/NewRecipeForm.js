@@ -67,8 +67,11 @@ export default function NewRecipeForm() {
 				});
 				const data = await res.json();
 				if (data.status == 200 && res.ok) {
+          console.log("Recipe saved successfully!");
 					router.push("/");
 				} else {
+          console.log("Error saving recipe");
+          
 					console.log(data.error);
 					setLoading(false);
 					setError(true);

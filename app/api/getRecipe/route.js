@@ -10,7 +10,7 @@ export async function GET(req) {
 	let recipe, error;
 	try {
 		({ data: recipe, error } = await supabase
-			.from("Recipes")
+			.from("recipes")
 			.select("*")
 			.eq("id", id));
 
